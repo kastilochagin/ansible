@@ -1,0 +1,22 @@
+---
+# tasks file for /etc/ansible/roles/worker
+
+- name: creating a 'worker' user
+  user:
+    name: worker
+
+- name: enabling SSH-key access for the 'worker' user
+  authorized_key:
+    user: worker
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+- name: enabling passwordless sudo access for the 'worker' user
+  lineinfile:
+    state: present
+    create: yes
+    path: /etc/sudoers.d/worker
+    line: "worker ALL=(ALL) NOPASSWD: ALL"
+    owner: root
+    group: root
+    mode: 0440
+    validate: /usr/sbin/visudo -csf %s

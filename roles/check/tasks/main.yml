@@ -1,0 +1,7 @@
+---
+# tasks file for /etc/ansible/roles/check
+
+- name: checking whether the web application returns the '200' status
+  uri:
+    url: http://192.168.56.121:80
+    status_code: 200
