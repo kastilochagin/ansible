@@ -2,16 +2,16 @@ pipeline {
   agent {label '!jenkins-master'}
     stages {
       stage('Cleaning after previous builds') {
-	    steps {
-	    sh 'rm -rf landing'
-		}
+        steps {
+	  sh 'rm -rf landing'
 	}
+      }
       stage('Cloning GitHub repo') {
         steps {
           sh """
-		  git clone https://github.com/kastilochagin/ansible.git landing
-		  cd landing 
-		  """
+	  git clone https://github.com/kastilochagin/ansible.git landing
+	  cd landing 
+	  """
         }
       }
       stage("Initiating Ansible roles") {
@@ -20,12 +20,12 @@ pipeline {
         }         
       }
       stage('Landing directory removal') {
-	    steps {
-		  sh """
-		  cd ..
-		  rm -rf landing
-		  """
-	    }
-	  }
+        steps {
+	  sh """
+	  cd ..
+	  rm -rf landing
+	  """
+	}
+      }
     }        
 }
