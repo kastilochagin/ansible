@@ -1,10 +1,4 @@
 ---
-#- hosts: all
-#  remote_user:
-#    root
-#  roles:
-#  - worker
-
 - hosts: all
   remote_user: 
     jenkins
