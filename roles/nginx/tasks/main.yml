@@ -41,9 +41,9 @@
     enabled: yes
     state: started
 
-- name: adding the 'worker' user to the 'docker' group
+- name: adding the 'jenkins' user to the 'docker' group
   user:
-    name: worker
+    name: jenkins
     groups: docker
     append: yes
 
